@@ -49,6 +49,45 @@ class CopingToolbox extends StatelessWidget {
                     color: Colors.black,
                   ),
                 ),
+
+                style: ButtonStyle(
+                    foregroundColor: MaterialStatePropertyAll(Colors.teal.shade500),
+                    side: MaterialStateProperty.all(BorderSide(
+                        color: Colors.teal.shade500,
+                        width: 1.0,
+                        style: BorderStyle.solid))
+                ),
+                onPressed: () {},
+              ),
+              OutlinedButton.icon(
+                icon: Icon(Icons.sticky_note_2_outlined),
+                label: Text(
+                  'Cancer Treatments Info Booklets',
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    letterSpacing: 0.5,
+                    color: Colors.black,
+                  ),
+                ),
+                style: ButtonStyle(
+                    foregroundColor: MaterialStatePropertyAll(Colors.teal.shade500),
+                    side: MaterialStateProperty.all(BorderSide(
+                        color: Colors.teal.shade500,
+                        width: 1.0,
+                        style: BorderStyle.solid))
+                ),
+                onPressed: () {},
+              ),
+              OutlinedButton.icon(
+                icon: Icon(Icons.sticky_note_2_outlined),
+                label: Text(
+                  'Living With Cancer Info Booklets',
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    letterSpacing: 0.5,
+                    color: Colors.black,
+                  ),
+                ),
                 style: ButtonStyle(
                     foregroundColor: MaterialStatePropertyAll(Colors.teal.shade500),
                     side: MaterialStateProperty.all(BorderSide(

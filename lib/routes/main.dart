@@ -3,6 +3,7 @@ import 'package:home/wellbeing_scores.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:home/wellbeing_chart.dart';
 import 'package:home/routes/coping_toolbox.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,7 +12,6 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
 
     return MaterialApp(
       title: 'HomePage',
@@ -96,6 +96,13 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
+    bool isMobile = MediaQuery.of(context).size.shortestSide < 600 ? true : false;
+
+    if(isMobile) {
+      SystemChrome.setPreferredOrientations([
+        DeviceOrientation.portraitUp,
+      ]);
+    }
 
     return Scaffold(
       body: SafeArea(
@@ -114,8 +121,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 IconButton(
                   iconSize: 40.0,
                   color: Colors.teal[500],
-                  icon: Icon(Icons.account_circle),
-                  onPressed: () { print("account pressed");},
+                  icon: Icon(Icons.settings_outlined),
+                  onPressed: () { print("settings pressed");},
                 ),
                 SizedBox(width: width * 0.05),
               ],
@@ -132,14 +139,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ]
             ),
+
             Material(
               elevation: 10.0,
               child: Container(
                 child:
                 WellbeingChart(data: data),
-
               ),
             ),
+
 
             ElevatedButton(
               onPressed: () { print("take quiz pressed");},
@@ -152,15 +160,13 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             SizedBox(height: 10.0),
-            Flexible(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: width * 0.10),
-                  child: Text(
-                    'The coping toolbox presents a list of support tools that will assist you emotionally on your cancer journey.',
-                    style: TextStyle(
-                      fontStyle: FontStyle.italic,
-                      letterSpacing: 0.5,
-                    ),
+            Padding(
+                padding: EdgeInsets.symmetric(horizontal: width * 0.10),
+                child: Text(
+                  'The coping toolbox presents a list of support tools that will assist you emotionally on your cancer journey.',
+                  style: TextStyle(
+                    fontStyle: FontStyle.italic,
+                    letterSpacing: 0.5,
                   ),
                 ),
             ),

@@ -19,7 +19,7 @@ class WellbeingChart extends StatelessWidget {
       )
     ];
     return Container(
-      height: 400,
+      height: 300,
       padding: EdgeInsets.all(20),
       child: Card(
         child: Padding(
