@@ -4,6 +4,8 @@ import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:home/wellbeing_chart.dart';
 import 'package:home/routes/coping_toolbox.dart';
 import 'package:flutter/services.dart';
+import 'cancer_types_info_booklets.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -17,7 +19,8 @@ class MyApp extends StatelessWidget {
       title: 'HomePage',
       routes: {
         '/' : (context) => MyHomePage(),
-        '/toolbox' : (context) => CopingToolbox(),
+        '/coping_toolbox' : (context) => CopingToolbox(),
+        '/cancer_types_info_booklets' : (context) => CancerTypes(),
       },
     );
   }
@@ -29,6 +32,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  int bottomNavIndex = 0;
 
   final List<WellbeingScore> data = [
     WellbeingScore(
@@ -191,7 +196,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
                 onPressed: () {
                   print("coping toolbox pressed");
-                  Navigator.pushNamed(context, '/toolbox');
+                  Navigator.pushNamed(context, '/coping_toolbox');
                 },
             ),
             SizedBox(height: 10.0),
@@ -200,6 +205,8 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: bottomNavIndex,
+        onTap: (index) => setState(() => bottomNavIndex = index),
         items: [
           BottomNavigationBarItem(
               icon: Icon(Icons.home_outlined),
