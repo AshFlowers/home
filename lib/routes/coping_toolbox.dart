@@ -78,7 +78,9 @@ class CopingToolbox extends StatelessWidget {
                         width: 1.0,
                         style: BorderStyle.solid))
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/cancer_treatments_info_booklets');
+                },
               ),
               OutlinedButton.icon(
                 icon: Icon(Icons.sticky_note_2_outlined),
@@ -97,7 +99,9 @@ class CopingToolbox extends StatelessWidget {
                         width: 1.0,
                         style: BorderStyle.solid))
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/living_with_cancer_info_booklets');
+                },
               ),
               OutlinedButton.icon(
                 icon: Icon(Icons.sticky_note_2_outlined),
@@ -116,7 +120,9 @@ class CopingToolbox extends StatelessWidget {
                         width: 1.0,
                         style: BorderStyle.solid))
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/after_cancer_treatment_info_booklets');
+                },
               ),
               OutlinedButton.icon(
                 icon: Icon(Icons.phone),

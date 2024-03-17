@@ -76,28 +76,35 @@ class CancerTypes extends StatelessWidget {
                     itemCount: types.length,
                     itemBuilder: (_, index) {
                       return GestureDetector(
-                        onTap: () {print('pressed pdf');},
-                        child: Card(
-                          color: Colors.grey[200],
-                          child: Padding(
-                            padding: EdgeInsets.all(10.0),
-                              child: Row(
-                                children: [
-                                  Text(
-                                    types[index],
-                                    style: TextStyle(
-                                      fontSize: 20.0,
-                                      letterSpacing: 1.0
+                        onTap: () {print('pressed ${types[index]} pdf');},
+                        child: Container(
+                          height: 90,
+                          child: Card(
+                            color: Colors.grey[200],
+                            child: Padding(
+                              padding: EdgeInsets.all(10.0),
+                                child: Row(
+                                  children: [
+                                    Flexible(
+                                      fit: FlexFit.tight,
+                                      child: Text(
+                                        types[index],
+                                        style: TextStyle(
+                                          fontSize: 20.0,
+                                          letterSpacing: 1.0
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                  Expanded(child: SizedBox()),
-                                  Icon(
-                                      Icons.picture_as_pdf,
-                                      color: Colors.teal[500],
-                                  ),
-                        
-                                ],
-                              )),
+                                    SizedBox(width: width * 0.05,),
+
+                                    Icon(
+                                        Icons.picture_as_pdf,
+                                        color: Colors.teal[500],
+                                    ),
+
+                                  ],
+                                )),
+                          ),
                         ),
                       );
                     },

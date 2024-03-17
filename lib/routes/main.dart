@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:home/routes/living_with_cancer_info_booklets.dart';
 import 'package:home/wellbeing_scores.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:home/wellbeing_chart.dart';
 import 'package:home/routes/coping_toolbox.dart';
 import 'package:flutter/services.dart';
-import 'cancer_types_info_booklets.dart';
+import 'package:home/routes/cancer_types_info_booklets.dart';
+import 'package:home/routes/cancer_treatments_info_booklets.dart';
+import 'package:home/routes/after_cancer_treatment_info_booklets.dart';
 
 
 void main() {
@@ -21,6 +24,9 @@ class MyApp extends StatelessWidget {
         '/' : (context) => MyHomePage(),
         '/coping_toolbox' : (context) => CopingToolbox(),
         '/cancer_types_info_booklets' : (context) => CancerTypes(),
+        '/cancer_treatments_info_booklets' : (context) => CancerTreatments(),
+        '/living_with_cancer_info_booklets' : (context) => LivingWithCancer(),
+        '/after_cancer_treatment_info_booklets' : (context) => AfterCancerTreatment(),
       },
     );
   }
