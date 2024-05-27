@@ -1,6 +1,6 @@
 class WellbeingScore {
   final String month;
-  final double score;
+  final double? score;
 
   WellbeingScore({
     required this.month,

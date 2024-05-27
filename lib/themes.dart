@@ -74,6 +74,16 @@ ThemeData lightTheme = ThemeData(
         ),
       ),
   ),
+
+    cardTheme: CardTheme(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+          side: BorderSide(
+            color: AppColors.primary,
+          ),
+        ),
+        color: AppColors.lightBackground
+    )
 );
 
 
@@ -147,4 +157,14 @@ ThemeData darkTheme = ThemeData(
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
     backgroundColor: Color(0xFFA8A8A8),
   ),
+
+  cardTheme: CardTheme(
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(10)),
+      side: BorderSide(
+        color: AppColors.primary,
+      ),
+    ),
+    color: AppColors.darkBackground
+  )
 );

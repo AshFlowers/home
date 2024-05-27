@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:home/themes.dart';
 
-class JournalEntry extends StatefulWidget {
+class JournalEntryEdit extends StatefulWidget {
 
   @override
-  State<JournalEntry> createState() => _JournalEntryState();
+  State<JournalEntryEdit> createState() => _JournalEntryEditState();
 }
 
-class _JournalEntryState extends State<JournalEntry> {
+class _JournalEntryEditState extends State<JournalEntryEdit> {
   TextEditingController titleController = TextEditingController();
   TextEditingController entryController = TextEditingController();
 
@@ -15,6 +15,12 @@ class _JournalEntryState extends State<JournalEntry> {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
+
+    final arguments = (ModalRoute.of(context)?.settings.arguments ?? <String, dynamic>{}) as Map;
+    titleController.text = arguments['entries'][arguments['index']].title;
+    entryController.text = arguments['entries'][arguments['index']].entry;
+
+
 
     return Scaffold(
       body: SafeArea(
@@ -66,8 +72,8 @@ class _JournalEntryState extends State<JournalEntry> {
               Expanded(
                 child: Container(
                   decoration: BoxDecoration(
-                    border: Border.all(color: AppColors.primary),
-                    borderRadius: BorderRadius.circular(10.0)
+                      border: Border.all(color: AppColors.primary),
+                      borderRadius: BorderRadius.circular(10.0)
                   ),
                   child: Column(
                     children: [
@@ -84,7 +90,7 @@ class _JournalEntryState extends State<JournalEntry> {
                               controller: entryController,
                               decoration: InputDecoration(
                                 border: InputBorder.none,
-                            ),
+                              ),
                               maxLines: 50,
                             ),
                           ],
@@ -112,21 +118,25 @@ class _JournalEntryState extends State<JournalEntry> {
                         child: Text(
                           'Back',
                           style: TextStyle(
-                            color: Theme.of(context).highlightColor
+                              color: Theme.of(context).highlightColor
                           ),
                         )
                     ),
                   ),
                   SizedBox(
-                      height: height/20,
-                      width: width/4,
+                    height: height/20,
+                    width: width/4,
                     child: ElevatedButton(
-                        onPressed: () {
+                        onPressed: () async {
                           FocusManager.instance.primaryFocus?.unfocus();
+                          final title = await titleController.text;
+                          final entry = await entryController.text;
                           Navigator.pop(context, {
-                            'title': titleController.text,
-                            'entry': entryController.text,
+                            'title': title,
+                            'entry': entry,
                           });
+
+
                         },
                         child: Text(
                           'Save',

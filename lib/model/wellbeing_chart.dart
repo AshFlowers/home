@@ -24,7 +24,11 @@ class WellbeingChart extends StatelessWidget {
       height: 300,
       padding: EdgeInsets.all(20),
       child: Card(
-        color: Theme.of(context).scaffoldBackgroundColor,
+        shape: RoundedRectangleBorder(
+          side: BorderSide(
+            color: Theme.of(context).scaffoldBackgroundColor,
+          ),
+        ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(

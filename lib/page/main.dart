@@ -23,18 +23,27 @@ import 'package:provider/provider.dart';
 import 'package:home/page/calendar.dart';
 import 'package:home/page/journal.dart';
 import 'package:home/db/score_storage.dart';
+import '../db/entry_storage.dart';
+import 'journal_entry_edit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final scoreStorage = ScoreStorage();
+  final entryStorage = EntryStorage();
 
   File scoresFile = await scoreStorage.scoresFile;
-  bool fileExists = await scoresFile.exists();
+  bool scoreFileExists = await scoresFile.exists();
 
-  if(!fileExists) {
+  File entriesFile = await entryStorage.entriesFile;
+  bool entriesFileExists = await entriesFile.exists();
+
+  if(!scoreFileExists) {
     await scoresFile.create();
   }
 
+  if(!entriesFileExists) {
+    await entriesFile.create();
+  }
 
   runApp(
     ChangeNotifierProvider<ThemeProvider>(
@@ -58,6 +67,7 @@ class HandInHand extends StatelessWidget {
             '/calendar': (context) => Calendar(),
             '/journal': (context) => Journal(),
             '/journal_entry': (context) => JournalEntry(),
+            '/journal_entry_edit': (context) => JournalEntryEdit(),
             '/accessibility_settings': (context) => AccessibilitySettings(),
             '/wellbeing_quiz': (context) => WellbeingQuiz(),
             '/coping_toolbox': (context) => CopingToolbox(),
@@ -123,15 +133,18 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    widget.scoreStorage.readScores().then((value) {
-      setState(() {
-        for(var score in jsonDecode(value)) {
-          scores.add(WellbeingScore.fromMap(score));
-        }
-      });
+    widget.scoreStorage.read().then((value) {
+      try {
+        setState(() {
+          for(var score in jsonDecode(value)) {
+            scores.add(WellbeingScore.fromMap(score));
+          }
+        });
+      } on FormatException catch(e) {
+        return;
+      }
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -188,19 +201,25 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
               onPressed: () async {
                 final now = DateTime.now();
-                final scoreMap = await Navigator.pushNamed(
-                    context, '/wellbeing_quiz'
-                ) as Map;
+                Map <String,double> scoreMap = {};
 
-                final scoreObj = WellbeingScore(
-                  month: months[now.month - 1],
-                  score: scoreMap['score'],
-                );
+                try {
+                  scoreMap = await Navigator.pushNamed(
+                      context, '/wellbeing_quiz'
+                  ) as Map <String, double>;
 
-                setState(() {
-                  scores.add(scoreObj);
-                  widget.scoreStorage.write(jsonEncode(scores));
-                });
+                  final scoreObj = WellbeingScore(
+                    month: months[now.month - 1],
+                    score: scoreMap['score'],
+                  );
+
+                  setState(() {
+                    scores.add(scoreObj);
+                    widget.scoreStorage.write(jsonEncode(scores));
+                  });
+                } catch(e) {
+                  return;
+                }
               },
 
               child: Text(
@@ -235,14 +254,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
 
                 child: Card(
-                  color: Theme.of(context).scaffoldBackgroundColor,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: const BorderRadius.all(Radius.circular(
-                        10)),
-                    side: BorderSide(
-                      color: AppColors.primary,
-                    ),
-                  ),
                   child: Padding(
                       padding: EdgeInsets.all(20.0),
                       child: Row(
