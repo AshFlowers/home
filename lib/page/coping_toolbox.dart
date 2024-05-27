@@ -89,7 +89,7 @@ class CopingToolbox extends StatelessWidget {
                 OutlinedButton.icon(
                   icon: Icon(Icons.phone),
                   label: Text(
-                    'Support & Services',
+                    'Support and Services',
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                   onPressed: () {

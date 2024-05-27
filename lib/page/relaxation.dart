@@ -78,7 +78,7 @@ class _ExerciseState extends State<Relaxation> {
                     children: [
                       Flexible(
                         child: Text(
-                          'Relaxation and Meditation',
+                          'Relaxation & Meditation',
                           style: Theme.of(context).textTheme.titleLarge,
                         ),
                       ),
