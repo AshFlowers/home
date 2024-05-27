@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../model/my_flutter_app_icons.dart';
+
 class CopingToolbox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -21,9 +23,8 @@ class CopingToolbox extends StatelessWidget {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    icon: Icon(Icons.arrow_circle_left_outlined),
+                    icon: Icon(MyFlutterApp.back),
                     iconSize: 40.0,
-                    //color: AppColors.primary,
                   ),
 
                 ],

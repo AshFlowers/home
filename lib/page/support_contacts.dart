@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:home/model/advanced_tile.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../model/my_flutter_app_icons.dart';
+
 class SupportContacts extends StatefulWidget {
   @override
   State<SupportContacts> createState() => _SupportContactsState();
@@ -352,7 +354,7 @@ class _SupportContactsState extends State<SupportContacts> {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-
+    final height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -363,19 +365,17 @@ class _SupportContactsState extends State<SupportContacts> {
               children: [
                 Row(
                   children: [
-
                     IconButton(
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      icon: Icon(Icons.arrow_circle_left_outlined),
+                      icon: Icon(MyFlutterApp.back),
                       iconSize: 40.0,
-                      color: Colors.teal[500],
                     ),
 
                   ],
                 ),
-
+                SizedBox(height: height/40,),
                 Row(
                     children: [
                       Flexible(

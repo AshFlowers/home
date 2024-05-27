@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+
+import '../model/my_flutter_app_icons.dart';
 
 class Relaxation extends StatefulWidget {
   @override
@@ -57,11 +60,13 @@ class _ExerciseState extends State<Relaxation> {
 
                       IconButton(
                         onPressed: () {
+                          SystemChrome.setPreferredOrientations([
+                            DeviceOrientation.portraitUp,
+                          ]);
                           Navigator.pop(context);
                         },
-                        icon: Icon(Icons.arrow_circle_left_outlined),
+                        icon: Icon(MyFlutterApp.back),
                         iconSize: 40.0,
-                        color: Colors.teal[500],
                       ),
 
                     ],

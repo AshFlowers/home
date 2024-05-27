@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:home/themes.dart';
+import '../model/my_flutter_app_icons.dart';
 
 class WellbeingQuiz extends StatefulWidget {
 
@@ -22,16 +24,13 @@ class _WellbeingQuizState extends State<WellbeingQuiz> {
             children: [
               Row(
                 children: [
-
                   IconButton(
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    icon: Icon(Icons.arrow_circle_left_outlined),
+                    icon: Icon(MyFlutterApp.back),
                     iconSize: 40.0,
-                    color: Colors.teal[500],
                   ),
-
                 ],
               ),
 
@@ -63,7 +62,7 @@ class _WellbeingQuizState extends State<WellbeingQuiz> {
                   divisions: 400,
                   min: 100,
                   max: 500,
-                  activeColor: Colors.teal[500],
+                  activeColor: AppColors.primary,
                   inactiveColor: Colors.grey,
                   onChanged: (value) => setState(() => this.values[0] = value),
               ),
@@ -88,7 +87,7 @@ class _WellbeingQuizState extends State<WellbeingQuiz> {
                 divisions: 400,
                 min: 100,
                 max: 500,
-                activeColor: Colors.teal[500],
+                activeColor: AppColors.primary,
                 inactiveColor: Colors.grey,
                 onChanged: (value) => setState(() => this.values[1] = value),
               ),
@@ -109,7 +108,7 @@ class _WellbeingQuizState extends State<WellbeingQuiz> {
                 divisions: 400,
                 min: 100,
                 max: 500,
-                activeColor: Colors.teal[500],
+                activeColor: AppColors.primary,
                 inactiveColor: Colors.grey,
                 onChanged: (value) => setState(() => this.values[2] = value),
               ),
@@ -130,7 +129,7 @@ class _WellbeingQuizState extends State<WellbeingQuiz> {
                 divisions: 400,
                 min: 100,
                 max: 500,
-                activeColor: Colors.teal[500],
+                activeColor: AppColors.primary,
                 inactiveColor: Colors.grey,
                 onChanged: (value) => setState(() => this.values[3] = value),
               ),
@@ -152,7 +151,7 @@ class _WellbeingQuizState extends State<WellbeingQuiz> {
                 divisions: 400,
                 min: 100,
                 max: 500,
-                activeColor: Colors.teal[500],
+                activeColor: AppColors.primary,
                 inactiveColor: Colors.grey,
                 onChanged: (value) => setState(() => this.values[4] = value),
               ),

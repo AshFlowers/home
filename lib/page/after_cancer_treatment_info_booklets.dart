@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../model/my_flutter_app_icons.dart';
+
 class AfterCancerTreatment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-
+    final height = MediaQuery.of(context).size.height;
     List <List<String>> types = [
       ['Arm and shoulder exercises after surgery','https://www.cancer.org.au/assets/pdf/arm-and-shoulder-exercises-after-surgery'],
       ['Breast prostheses and reconstruction','https://www.cancer.org.au/assets/pdf/breast-prostheses-and-reconstruction'],
@@ -34,13 +36,14 @@ class AfterCancerTreatment extends StatelessWidget {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    icon: Icon(Icons.arrow_circle_left_outlined),
+                    icon: Icon(MyFlutterApp.back),
                     iconSize: 40.0,
-                    color: Colors.teal[500],
                   ),
 
                 ],
               ),
+              SizedBox(height: height/40,),
+
               Row(
                   children: [
                     Flexible(
@@ -52,19 +55,8 @@ class AfterCancerTreatment extends StatelessWidget {
                   ]
               ),
 
-              SizedBox(height: 10.0,),
-              Row(
-                  children: [
-                    Flexible(
-                      child: Text(
-                        'Find out what to expect',
-                        style: Theme.of(context).textTheme.titleSmall,
-                      ),
-                    ),
-                  ]
-              ),
+              SizedBox(height: height/40,),
 
-              SizedBox(height: 10.0,),
               Expanded(
                 child: ListView.builder(
                   itemCount: types.length,

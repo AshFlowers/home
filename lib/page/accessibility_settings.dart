@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:home/theme_provider.dart';
 
+import '../model/my_flutter_app_icons.dart';
+
 class AccessibilitySettings extends StatefulWidget {
 
   @override
@@ -41,7 +43,7 @@ class _AccessibilitySettingsState extends State<AccessibilitySettings> {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    icon: Icon(Icons.arrow_circle_left_outlined),
+                    icon: Icon(MyFlutterApp.back),
                     iconSize: 40.0,
                     //color: AppColors.primary,
                   ),

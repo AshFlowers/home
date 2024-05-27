@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:home/model/basic_tile.dart';
 
+import '../model/my_flutter_app_icons.dart';
+
 class Questions extends StatefulWidget {
   @override
   State<Questions> createState() => _QuestionsState();
@@ -49,11 +51,8 @@ class _QuestionsState extends State<Questions> {
   ];
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery
-        .of(context)
-        .size
-        .width;
-
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -64,19 +63,17 @@ class _QuestionsState extends State<Questions> {
             children: [
               Row(
                 children: [
-
                   IconButton(
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    icon: Icon(Icons.arrow_circle_left_outlined),
+                    icon: Icon(MyFlutterApp.back),
                     iconSize: 40.0,
-                    color: Colors.teal[500],
                   ),
 
                 ],
               ),
-
+              SizedBox(height: height/40,),
               Row(
                   children: [
                     Flexible(

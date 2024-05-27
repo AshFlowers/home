@@ -153,7 +153,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SafeArea(
@@ -321,6 +320,7 @@ class _MyHomePageState extends State<MyHomePage> {
         elevation: 15.0,
         showSelectedLabels: false,
         showUnselectedLabels: false,
+        selectedItemColor: AppColors.primary,
         selectedIconTheme: IconThemeData(size: 40),
         unselectedIconTheme: IconThemeData(size: 25),
       ),

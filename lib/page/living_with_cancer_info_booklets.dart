@@ -3,10 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../model/my_flutter_app_icons.dart';
+
 class LivingWithCancer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
     final String desc =
         'Gathering information about cancer and its various life hurdles '
         'can help you make informed decisions. Below are info booklets on '
@@ -43,13 +46,13 @@ class LivingWithCancer extends StatelessWidget {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    icon: Icon(Icons.arrow_circle_left_outlined),
+                    icon: Icon(MyFlutterApp.back),
                     iconSize: 40.0,
-                    color: Colors.teal[500],
                   ),
 
                 ],
               ),
+              SizedBox(height: height/40,),
               Row(
                   children: [
                     Flexible(

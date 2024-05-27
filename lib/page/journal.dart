@@ -71,6 +71,7 @@ class _JournalState extends State<Journal> {
         elevation: 15.0,
         showSelectedLabels: false,
         showUnselectedLabels: false,
+        selectedItemColor: AppColors.primary,
         selectedIconTheme: IconThemeData(size: 40),
         unselectedIconTheme: IconThemeData(size: 25),
       ),

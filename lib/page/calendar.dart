@@ -228,7 +228,7 @@ class _CalenderPageViewState extends State<CalendarPageView> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.teal[500],
+        selectedItemColor: AppColors.primary,
         onTap: _onItemTapped,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
