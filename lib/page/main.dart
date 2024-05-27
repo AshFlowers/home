@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:home/page/exercise_select.dart';
 import 'package:home/page/journal_entry.dart';
@@ -33,7 +34,6 @@ void main() async {
 
   File scoresFile = await scoreStorage.scoresFile;
   bool scoreFileExists = await scoresFile.exists();
-
   File entriesFile = await entryStorage.entriesFile;
   bool entriesFileExists = await entriesFile.exists();
 
@@ -62,8 +62,13 @@ class HandInHand extends StatelessWidget {
     return Consumer<ThemeProvider>(
       builder: (context, provider, child) {
         return MaterialApp(
+          home: AnimatedSplashScreen(
+            duration: 3000,
+            splash: 'assets/logo.png',
+            nextScreen: MyHomePage(),
+          ),
           routes: {
-            '/': (context) => MyHomePage(),
+            '/home_page': (context) => MyHomePage(),
             '/calendar': (context) => Calendar(),
             '/journal': (context) => Journal(),
             '/journal_entry': (context) => JournalEntry(),

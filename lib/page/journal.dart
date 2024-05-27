@@ -26,8 +26,8 @@ class _JournalState extends State<Journal> {
           }
         });
       } on FormatException catch(e) {
-      return;
-    }
+        return;
+      }
     });
   }
 
@@ -45,7 +45,7 @@ class _JournalState extends State<Journal> {
             Navigator.pop(context);
           }
           if (index == 2) {
-            Navigator.popAndPushNamed(context, '/calendar');
+            Navigator.pushReplacementNamed(context, '/calendar');
           }
         },
         items: [

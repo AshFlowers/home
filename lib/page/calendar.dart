@@ -238,9 +238,9 @@ class _CalenderPageViewState extends State<CalendarPageView> {
           FloatingActionButton(
             heroTag: "home",
             onPressed: () {
-              Navigator.of(context, rootNavigator: true).popAndPushNamed('/');
+              Navigator.of(context, rootNavigator: true).pushReplacementNamed('/home_page');
             },
-            backgroundColor: Colors.teal[500],
+            backgroundColor: AppColors.primary,
             foregroundColor: Colors.white,
             tooltip: "Return Home",
             shape: const CircleBorder(),
@@ -252,7 +252,7 @@ class _CalenderPageViewState extends State<CalendarPageView> {
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => EventViewPage()),);
             },
-            backgroundColor: Colors.teal[500],
+            backgroundColor: AppColors.primary,
             foregroundColor: Colors.white,
             tooltip: "Add Event",
             shape: const CircleBorder(),
