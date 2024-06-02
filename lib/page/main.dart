@@ -65,10 +65,10 @@ class HandInHand extends StatelessWidget {
           home: AnimatedSplashScreen(
             duration: 3000,
             splash: 'assets/logo.png',
-            nextScreen: MyHomePage(),
+            nextScreen: Home(),
           ),
           routes: {
-            '/home_page': (context) => MyHomePage(),
+            '/home': (context) => Home(),
             '/calendar': (context) => Calendar(),
             '/journal': (context) => Journal(),
             '/journal_entry': (context) => JournalEntry(),
@@ -86,7 +86,6 @@ class HandInHand extends StatelessWidget {
             '/exercise': (context) => Exercise(),
             '/exercise_select': (context) => ExerciseSelect(),
           },
-
           theme: lightTheme,
           darkTheme: darkTheme,
           themeMode: provider.themeMode,
@@ -97,47 +96,33 @@ class HandInHand extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class Home extends StatefulWidget {
   final scoreStorage = ScoreStorage();
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<Home> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<Home> {
   int bottomNavIndex = 0;
   List<String> months = [
     'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN',
     'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC',
   ];
-//dummy data
-  //final List<WellbeingScore> scores = [];
-
-  final List<WellbeingScore> scores = [
-    WellbeingScore(
-      month: "JAN",
-      score: 1.5,
-    ),
-    WellbeingScore(
-      month: "FEB",
-      score: 2.5,
-    ),
-    WellbeingScore(
-      month: "MAR",
-      score: 3.5,
-    ),
-    WellbeingScore(
-      month: "APR",
-      score: 4.5,
-    ),
-  ];
 
   double score = 0;
-
+  final List<WellbeingScore> scores = [];
 
   @override
   void initState() {
     super.initState();
+    for (int i = 0; i < months.length; i++) {
+      scores.add(WellbeingScore(
+        month: months[i],
+        score: 0,
+      ));
+    }
+
     widget.scoreStorage.read().then((value) {
       try {
         setState(() {
@@ -238,15 +223,13 @@ class _MyHomePageState extends State<MyHomePage> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: width * 0.10),
               child: Text(
-                'The coping toolbox presents a list of support tools that will assist you emotionally on your cancer journey',
-                style: Theme
-                    .of(context)
-                    .textTheme
-                    .bodySmall,
+                'The coping toolbox presents a list of support tools that will '
+                'assist you emotionally on your cancer journey',
+                style: Theme.of(context).textTheme.bodySmall,
               ),
             ),
 
-            Icon(
+            const Icon(
               Icons.arrow_downward,
             ),
 
@@ -270,7 +253,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             ),
                           ),
                           SizedBox(width: width * 0.05),
-                          Icon(
+                          const Icon(
                             Icons.business_center,
                           ),
 
@@ -279,7 +262,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
-            SizedBox(height: 10.0),
+            const SizedBox(height: 10.0),
 
           ],
         ),
@@ -297,23 +280,21 @@ class _MyHomePageState extends State<MyHomePage> {
             bottomNavIndex = 0;
           }
         },
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),
             label: 'Home',
-            backgroundColor: Colors.grey[300],
           ),
 
           BottomNavigationBarItem(
             icon: Icon(Icons.book_outlined),
             label: 'Journal',
-            backgroundColor: Colors.grey[300],
+
           ),
 
           BottomNavigationBarItem(
             icon: Icon(Icons.calendar_month),
             label: 'Calendar',
-            backgroundColor: Colors.grey[300],
           ),
 
         ],
@@ -321,8 +302,8 @@ class _MyHomePageState extends State<MyHomePage> {
         showSelectedLabels: false,
         showUnselectedLabels: false,
         selectedItemColor: AppColors.primary,
-        selectedIconTheme: IconThemeData(size: 40),
-        unselectedIconTheme: IconThemeData(size: 25),
+        selectedIconTheme: const IconThemeData(size: 40),
+        unselectedIconTheme: const IconThemeData(size: 25),
       ),
     );
   }

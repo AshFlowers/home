@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static final Color primary = Color(0xFF559595);
-  static final Color lightBackground = Colors.white;
-  static final Color lightText = Colors.black;
-  static final Color darkBackground = Color(0xFF646464);
+  static const Color primary = Color(0xFF559595);
+  static const Color lightBackground = Colors.white;
+  static const Color lightText = Colors.black;
+  static const Color darkBackground = Color(0xFF646464);
   static final Color darkText = Colors.grey.shade300;
 }
 
@@ -17,7 +17,7 @@ ThemeData lightTheme = ThemeData(
   scaffoldBackgroundColor: AppColors.lightBackground,
   highlightColor: Colors.white,
 
-  textTheme: TextTheme(
+  textTheme: const TextTheme(
     titleLarge: TextStyle(
       color: AppColors.lightText,
       fontSize: 28.0,
@@ -57,7 +57,7 @@ ThemeData lightTheme = ThemeData(
     ),
   ),
 
-  iconTheme: IconThemeData(
+  iconTheme: const IconThemeData(
     color: AppColors.primary,
   ),
 
@@ -69,13 +69,13 @@ ThemeData lightTheme = ThemeData(
 
   outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
-        side: BorderSide(
+        side: const BorderSide(
           color: AppColors.primary,
         ),
       ),
   ),
 
-    cardTheme: CardTheme(
+    cardTheme: const CardTheme(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(10)),
           side: BorderSide(
@@ -136,7 +136,7 @@ ThemeData darkTheme = ThemeData(
     ),
   ),
 
-  iconTheme: IconThemeData(
+  iconTheme: const IconThemeData(
     color: AppColors.primary,
   ),
 
@@ -148,17 +148,17 @@ ThemeData darkTheme = ThemeData(
 
   outlinedButtonTheme: OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
-      side: BorderSide(
+      side: const BorderSide(
         color: AppColors.primary,
       ),
     ),
   ),
 
-  bottomNavigationBarTheme: BottomNavigationBarThemeData(
+  bottomNavigationBarTheme: const BottomNavigationBarThemeData(
     backgroundColor: Color(0xFFA8A8A8),
   ),
 
-  cardTheme: CardTheme(
+  cardTheme: const CardTheme(
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.all(Radius.circular(10)),
       side: BorderSide(

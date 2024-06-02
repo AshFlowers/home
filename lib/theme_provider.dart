@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class ThemeProvider extends ChangeNotifier {
-  String currentTheme = 'light';
+  String _currentTheme = 'light';
 
   ThemeMode get themeMode {
-    if (currentTheme == 'light') {
+    if (_currentTheme == 'light') {
       return ThemeMode.light;
     }
     else {
@@ -13,12 +13,12 @@ class ThemeProvider extends ChangeNotifier {
   }
 
   setTheme(String theme) {
-    currentTheme = theme;
+    _currentTheme = theme;
     notifyListeners();
   }
 
   String getTheme() {
-    return currentTheme;
+    return _currentTheme;
   }
 }
 

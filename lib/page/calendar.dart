@@ -238,7 +238,7 @@ class _CalenderPageViewState extends State<CalendarPageView> {
           FloatingActionButton(
             heroTag: "home",
             onPressed: () {
-              Navigator.of(context, rootNavigator: true).pushReplacementNamed('/home_page');
+              Navigator.of(context, rootNavigator: true).pushReplacementNamed('/home');
             },
             backgroundColor: AppColors.primary,
             foregroundColor: Colors.white,

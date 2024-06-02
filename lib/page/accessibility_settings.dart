@@ -1,32 +1,39 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:home/theme_provider.dart';
-
 import '../model/my_flutter_app_icons.dart';
+import 'package:flutter/foundation.dart';
 
 class AccessibilitySettings extends StatefulWidget {
+  const AccessibilitySettings({Key? key}) : super(key: key);
 
   @override
-  State<AccessibilitySettings> createState() => _AccessibilitySettingsState();
+  State<AccessibilitySettings> createState() => AccessibilitySettingsState();
 }
-
-class _AccessibilitySettingsState extends State<AccessibilitySettings> {
-  late List<bool> _selections;
+@visibleForTesting
+class AccessibilitySettingsState extends State<AccessibilitySettings> {
+  @visibleForTesting
+  late List<bool> selections;
+  @visibleForTesting
+  late ThemeProvider provider;
+  @visibleForTesting
+  late Map args;
 
   @override
   Widget build(BuildContext context) {
-    final args = (ModalRoute.of(context)?.settings.arguments ?? <String, ThemeProvider>{}) as Map;
-    ThemeProvider provider = args['currentTheme'];
-    String currentTheme = provider.getTheme();
-    if (currentTheme == 'light')
-      _selections = [true, false];
-    else
-      _selections = [false, true];
-
-
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
+    args = (
+        ModalRoute.of(context)?.settings.arguments ?? <String, ThemeProvider>{}
+    ) as Map;
+
+    try {
+      provider = args['currentTheme'];
+    } catch(e) {
+      provider = ThemeProvider();
+    }
+
+    setSelections();
+
 
     return Scaffold(
       body: SafeArea(
@@ -38,16 +45,13 @@ class _AccessibilitySettingsState extends State<AccessibilitySettings> {
             children: [
               Row(
                 children: [
-
                   IconButton(
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    icon: Icon(MyFlutterApp.back),
+                    icon: const Icon(MyFlutterApp.back),
                     iconSize: 40.0,
-                    //color: AppColors.primary,
                   ),
-
                 ],
               ),
 
@@ -68,19 +72,18 @@ class _AccessibilitySettingsState extends State<AccessibilitySettings> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ToggleButtons(
+                    key: const Key('Toggle'),
                     onPressed: (int index) {
-                      if (index == 0)
-                        provider.setTheme('light');
-                      else
-                        provider.setTheme('dark');
+                      (index == 0) ?
+                        provider.setTheme('light') : provider.setTheme('dark');
                     },
 
-                    isSelected: _selections,
+                    isSelected: selections,
                     constraints: BoxConstraints(
-                      minWidth: width/3,
-                      minHeight: width/3,
+                      minWidth: width/4,
+                      minHeight: width/4,
                     ),
-                    children: [
+                    children: const [
                       Icon(Icons.sunny),
                       Icon(Icons.dark_mode),
                     ],
@@ -93,4 +96,12 @@ class _AccessibilitySettingsState extends State<AccessibilitySettings> {
       ),
     );
   }
+
+  @visibleForTesting
+  void setSelections() {
+    (provider.getTheme() == 'light') ?
+      selections = [true, false] : selections = [false, true];
+  }
+
+
 }

@@ -10,6 +10,16 @@ class WellbeingChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final staticTicks = <charts.TickSpec<int>>[
+      new charts.TickSpec(0),
+      new charts.TickSpec(1),
+      new charts.TickSpec(2),
+      new charts.TickSpec(3),
+      new charts.TickSpec(4),
+      new charts.TickSpec(5)
+    ];
+
+
     List<charts.Series<WellbeingScore, String>> scores = [
       charts.Series(
           id: "Wellbeing",
@@ -22,7 +32,7 @@ class WellbeingChart extends StatelessWidget {
     return Container(
       color: Theme.of(context).scaffoldBackgroundColor,
       height: 300,
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       child: Card(
         shape: RoundedRectangleBorder(
           side: BorderSide(
@@ -44,12 +54,13 @@ class WellbeingChart extends StatelessWidget {
                   animate: true,
                   primaryMeasureAxis: charts.NumericAxisSpec(
                       renderSpec: charts.GridlineRendererSpec(
-                        labelStyle: charts.TextStyleSpec(color: charts.MaterialPalette.black)
+                        labelStyle: charts.TextStyleSpec(color: charts.ColorUtil.fromDartColor(AppColors.primary))
                       ),
+                      tickProviderSpec: new charts.StaticNumericTickProviderSpec(staticTicks),
                   ),
                   domainAxis: charts.OrdinalAxisSpec(
                     renderSpec: charts.GridlineRendererSpec(
-                        labelStyle: charts.TextStyleSpec(color: charts.MaterialPalette.black)
+                        labelStyle: charts.TextStyleSpec(color: charts.ColorUtil.fromDartColor(AppColors.primary))
                     ),
                   ),
                 ),
